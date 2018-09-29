@@ -37,7 +37,7 @@ class registrarCtl extends controller{
 		$confirmarSenha = $_POST['confirmarSenha'];
 		$usuario->setImagem($_FILES['imagem']);
 		$imagem = $usuario->getImagem();		
-		if($this->verificaEmail('aluno' ,$usuario->getEmail()) == true){
+		if($this->verificaEmail('aluno' , $usuario->getEmail()) == true){
 			if($usuario->getSenha() == $confirmarSenha){
 				if(isset($imagem['tmp_name']) && !empty($imagem['tmp_name'])){
 					$extensao = substr($_FILES['imagem']['name'], -4);
@@ -48,8 +48,7 @@ class registrarCtl extends controller{
 						"imagem" => md5($usuario->getSenha()).$extensao,
 						"senha" => $usuario->getSenha(),
 					));
-					echo"<script language='javascript' type='text/javascript'>alert('Registrado com sucesso');window.location.href='../alunoList/listarAlunos';</script>";
-					exit;
+					echo"<script language='javascript' type='text/javascript'>alert('Dados não preenchidos ou senhas não identicas');window.location.href='../gdee';</script>";
 				}
 			}else{
 				echo"<script language='javascript' type='text/javascript'>alert('Dados não preenchidos ou senhas não identicas');window.location.href='../registrar';</script>";

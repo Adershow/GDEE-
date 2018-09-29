@@ -66,7 +66,7 @@
 
                 <h4 class="card-title"><?php echo $ev['nome']; ?></h4>
 
-                <p class="card-text"><?php echo str_replace(',' , ', ', $ev['nome']); ?></p>
+                <p class="card-text"><?php echo str_replace(',' , ', ', $ev['nomess']); ?></p>
                 
 
                 <form action="eventdesc/listarDados" method="post">

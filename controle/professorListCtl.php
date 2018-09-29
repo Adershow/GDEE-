@@ -88,7 +88,7 @@ class professorListCtl extends controller{
 			}else{
 				$DAO->query("SELECT p.nome, p.id,  p.imagem, GROUP_CONCAT(m.nome) as nomes FROM professor p INNER JOIN professor_has_materias pm on em.professor_id = p.id INNER JOIN materia m on m.id = pm.Materia_id GROUP BY p.id LIMIT 5 OFFSET ".$mody);
 			}
-			$_SESSION['professors'] = $DAO->result();
+			$_SESSION['professores'] = $DAO->result();
 			$_SESSION['paginaAtual'] = $url;
 		}else{
 			header("location: ../professorList");
@@ -103,7 +103,7 @@ class professorListCtl extends controller{
 		$DAO2->query("SELECT p.nome, p.id,  p.imagem, GROUP_CONCAT(m.nome) as nomes FROM professor p INNER JOIN professor_has_materia pm on em.professor_id = p.id INNER JOIN materia m on m.id = pm.Materia_id WHERE m.nome = '".$materia."' GROUP BY p.id LIMIT 5");
 		$DAO->result();
 		$count = $DAO->numRows();
-		$_SESSION['professors'] = $DAO2->result();
+		$_SESSION['professores'] = $DAO2->result();
 		$_SESSION['numero'] = ceil(($count/100)*20);
 		header("location: ../professorList");
 	}

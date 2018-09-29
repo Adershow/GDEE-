@@ -75,21 +75,76 @@
                                                 </div>
                                                 <div class="col-12 col-md-4">
                                                     <div class="contact-content contact-information">
-                                                        <h4>Senha</h4>
-                                                        <p>*****</p>
+                                                        <h4>Opções</h4>
+                                                        <p><a data-toggle="modal" data-target="#modalLRFormAlunos" href="#"><button class="btn btn-primary">Editar</button></a></p>
 
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--/.Content-->
                                     </div>
                                 </div>
                             </div>
-                        </section>         
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    <?php } ?>
+    </div>
+</section>
+<div class="modal fade" id="modalLRFormAlunos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+            <!--Body-->
+            <div class="modal-body mb-1">
+                <form action="perfil/editar" method="post"  enctype="multipart/form-data">
+                    <div class="md-form mt-3">
+                      <input type="text" id="materialSubscriptionFormPasswords" name="nome" class="form-control" placeholder="Nome" required>
+                  </div>
+                  <br/>
+                  <!-- E-mai -->
+                  <div class="md-form">
+                      <input type="text" id="materialSubscriptionFormEmail" name="email" class="form-control" placeholder="Email" required>
+                  </div>
+
+              </div>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="imagem" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
+                    <label class="custom-file-label" for="inputGroupFile01">Escolha seu Arquivo</label>
+                </div>
+            </div>
+
+            <div class="text-center mt-2">
+                <button class="btn btn-info">Enviar <i class="fa fa-sign-in ml-1"></i></button>
+            </div>
+            <br/>
+        </form>
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+    </div>         
+</div>
+</div>
+</div>
+</div>
+<?php } ?>
 </section>
 <?php include 'footer.php';?>

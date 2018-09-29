@@ -88,7 +88,7 @@ class alunoListCtl extends controller{
 			$_SESSION['eventos'] = $DAO->result();
 			$_SESSION['paginaAtual'] = $url;
 		}else{
-			header("location: ../professor");
+			header("location: ../alunoList");
 		}
 	}
 

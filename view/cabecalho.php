@@ -64,6 +64,7 @@
                         <li><a href="registrar">Aluno</a></li>
                         <li><a href="registrarP">Professor</a></li>
                         <li><a href="registrarE">Eventos</a></li>
+                        <li><a href="registrarMateria">Materias</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Ver</a>
@@ -71,6 +72,7 @@
                         <li><a href="../gdee/alunoList/listarAlunos">Alunos</a></li>
                         <li><a href="../gdee/professorList/listarProfessores">Professores</a></li>
                         <li><a href="../gdee/eventosList/listarEventos">Eventos</a></li>
+                        <li><a href="../gdee/materiaList">Materias</a></li>
                     </ul>
                 </li>
                 <li><a href="../gdee/perfil/listarDados">Perfil</a></li>

@@ -29,10 +29,10 @@ class eventosListCtl extends controller{
 			$search = $_POST['search'];
 			$_SESSION['search'] = $search;
 			$DAO->query("SELECT e.id, e.nome, e.descricao, e.imagem, e.data_inicial, e.data_final FROM evento e WHERE e.nome ='".$search."'");
-			$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$search."' GROUP BY e.id LIMIT 5");
+			$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$search."' GROUP BY e.id LIMIT 5");
 		}else{
 			$DAO->query("SELECT e.id, e.nome, e.descricao, e.imagem, e.data_inicial, e.data_final FROM evento e ");
-			$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5");
+			$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5");
 		}
 		$DAO->result();
 		$count = $DAO->numRows();
@@ -49,9 +49,9 @@ class eventosListCtl extends controller{
 		$mody = ($url*5)-5;
 		echo $_SESSION['search'];
 		if ($_SESSION['search'] != '' ){
-			$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$_SESSION['search']."' GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+			$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$_SESSION['search']."' GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 		}else{
-			$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+			$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 		}
 		$_SESSION['eventos'] = $DAO->result();
 		$_SESSION['paginaAtual'] = $url;
@@ -69,9 +69,9 @@ class eventosListCtl extends controller{
 			$mody = ($url*5)-5;
 			
 			if ($_SESSION['search'] != ''){
-				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 			}else{
-				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 			}
 			
 			$_SESSION['eventos'] = $DAO->result();
@@ -84,14 +84,14 @@ class eventosListCtl extends controller{
 			$url = $_POST['preview'];
 			$mody = ($url*5)-5;
 			if ($_SESSION['search'] != ''){
-				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$_SESSION['search']."' GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id WHERE e.nome = '".$_SESSION['search']."' GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 			}else{
-				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
+				$DAO->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5 OFFSET ".$mody);
 			}
 			$_SESSION['eventos'] = $DAO->result();
 			$_SESSION['paginaAtual'] = $url;
 		}else{
-			header("location: ../professor");
+			header("location: ../eventosList");
 		}
 	}
 	public function filtro(){
@@ -100,7 +100,7 @@ class eventosListCtl extends controller{
 		$DAO = new GenericDAO();
 		$DAO2 = new GenericDAO();
 		$DAO->query("SELECT e.id, e.nome, e.imagem, e.descricao FROM evento e");
-		$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nome, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id RIGHT JOIN professor_has_evento pe on pe.Evento_id = e.id RIGHT JOIN professor p on p.id = pe.Professor_id GROUP BY e.id LIMIT 5");
+		$DAO2->query("SELECT e.nome, e.id, e.descricao, e.imagem, GROUP_CONCAT(m.nome) as nomess, GROUP_CONCAT(p.nome) as nomes FROM evento e INNER JOIN evento_has_materia em on em.Evento_id = e.id INNER JOIN materia m on m.id = em.Materia_id LEFT JOIN professor_has_evento pe on pe.Evento_id = e.id LEFT JOIN professor p on p.id = pe.Professor_id WHERE m.nome = '".$materia."' GROUP BY e.id LIMIT 5");
 		$DAO->result();
 		$count = $DAO->numRows();
 		$_SESSION['eventos'] = $DAO2->result();

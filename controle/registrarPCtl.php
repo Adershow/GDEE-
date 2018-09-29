@@ -16,7 +16,7 @@ class registrarPCtl extends controller{
 			$_SESSION["materias"] = $DAO->result();
 			$this->loadView('registrarP');
 		}else{
-			echo"<script language='javascript' type='text/javascript'>alert('Você não tem autorização para acessar esta area');window.location.href='../logar';</script>";
+			echo"<script language='javascript' type='text/javascript'>alert('Você não tem autorização para acessar esta area');window.location.href='../gdee';</script>";
 		}	
 	}
 
