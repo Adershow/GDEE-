@@ -20,9 +20,12 @@ class logarCtl extends controller{
 				$_SESSION['senha'] = $senha;
 				foreach ($DAO->result() as $usu) {
 					if ($usu['adm'] == 1) {
-						header('location:../AreaAdministrativa');
+						header('location:../');
 						$_SESSION['imagem'] = $usu['imagem'];
 						$_SESSION['email'] = $usu['email'];
+						$_SESSION['adm'] = $usu['adm'];
+						$_SESSION['login'] = $usu['nome'];
+						$_SESSION['id'] = $usu['id'];
 					}else{
 						header('location:../');
 						$_SESSION['id'] = $usu['id'];
