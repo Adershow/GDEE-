@@ -28,9 +28,6 @@ error_reporting(0);
 			<p class="animated fadeIn text-muted">Será um prazer ter você conosco.</p>
 		</div>
 	</div>
-
-
-
 	<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog cascading-modal" role="document">
 			<!--Content-->

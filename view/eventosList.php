@@ -69,7 +69,7 @@
                 <p class="card-text"><?php echo str_replace(',' , ', ', $ev['nome']); ?></p>
                 
 
-                <form action="areaProfessor/listarDados" method="post">
+                <form action="eventdesc/listarDados" method="post">
 
                     <button type="submit" name="id" value="<?php echo $ev['id'];?>" class="btn btn-primary" style="margin: auto;" >Acessar</button>
                 </form>
