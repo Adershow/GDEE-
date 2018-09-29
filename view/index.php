@@ -11,6 +11,7 @@
             <h5 class="animated fadeIn mb-3">Thank you for using our product. We're glad you're with us.</h5>
 
             <p class="animated fadeIn text-muted">MDB Team</p>
+            <a href="registrar"><button >Acessar outra area</button></a>
         </div>
     </div>
 
